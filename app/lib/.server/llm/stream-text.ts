@@ -96,15 +96,10 @@ function createFilesContext(files: FileMap) {
         return '';
       }
 
-      const codeWithLinesNumbers = dirent.content
-        .split('\n')
-        .map((v, i) => `${i + 1}|${v}`)
-        .join('\n');
-
-      return `<file path="${path}">\n${codeWithLinesNumbers}\n</file>`;
+      return `<file path="${path}">\n${dirent.content}\n</file>`;
     });
 
-  return `Below are the code files present in the webcontainer:\ncode format:\n<line number>|<line content>\n <codebase>${fileContexts.join('\n\n')}\n\n</codebase>`;
+  return `Below are the code files present in the webcontainer:\n <codebase>\n${fileContexts.join('\n\n')}\n</codebase>`;
 }
 
 function extractPropertiesFromMessage(message: Message): { model: string; provider: string; content: string } {
@@ -226,9 +221,9 @@ export async function streamText(props: {
 
   logger.info(`Sending llm call to ${provider.name} with model ${modelDetails.name}`);
 
-  return _streamText({
+  return await _streamText({
     model: provider.getModelInstance({
-      model: currentModel,
+      model: modelDetails.name,
       serverEnv,
       apiKeys,
       providerSettings,
