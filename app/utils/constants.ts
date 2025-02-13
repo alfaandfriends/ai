@@ -25,14 +25,16 @@ PROVIDER_LIST.forEach((provider) => {
 // starter Templates
 
 export const STARTER_TEMPLATES: Template[] = [
-  {
-    name: 'bolt-astro-basic',
-    label: 'Astro Basic',
-    description: 'Lightweight Astro starter template for building fast static websites',
-    githubRepo: 'thecodacus/bolt-astro-basic-template',
-    tags: ['astro', 'blog', 'performance'],
-    icon: 'i-bolt:astro',
-  },
+  /*
+   * {
+   *   name: 'bolt-astro-basic',
+   *   label: 'Astro Basic',
+   *   description: 'Lightweight Astro starter template for building fast static websites',
+   *   githubRepo: 'thecodacus/bolt-astro-basic-template',
+   *   tags: ['astro', 'blog', 'performance'],
+   *   icon: 'i-bolt:astro',
+   * },
+   */
   {
     name: 'bolt-nextjs-shadcn',
     label: 'Next.js with shadcn/ui',

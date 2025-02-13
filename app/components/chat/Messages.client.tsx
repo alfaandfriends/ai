@@ -50,10 +50,6 @@ export const Messages = React.forwardRef<HTMLDivElement, MessagesProps>((props: 
             const isLast = index === messages.length - 1;
             const isHidden = annotations?.includes('hidden');
 
-            if (isHidden) {
-              return <Fragment key={index} />;
-            }
-
             return (
               <div
                 key={index}
@@ -70,13 +66,13 @@ export const Messages = React.forwardRef<HTMLDivElement, MessagesProps>((props: 
                   </div>
                 )}
                 <div className="grid grid-col-1 w-full">
-                  {isUserMessage ? (
-                    <UserMessage content={content} />
-                  ) : (
-                    <AssistantMessage content={content} annotations={message.annotations} />
-                  )}
+                  {/* {isUserMessage ? ( */}
+                  <UserMessage content={content} />
+                  {/* ) : ( */}
+                  {/* <AssistantMessage content={content} annotations={message.annotations} /> */}
+                  {/* )} */}
                 </div>
-                {!isUserMessage && (
+                {/* {!isUserMessage && (
                   <div className="flex gap-2 flex-col lg:flex-row">
                     {messageId && (
                       <WithTooltip tooltip="Revert to this message">
@@ -102,7 +98,7 @@ export const Messages = React.forwardRef<HTMLDivElement, MessagesProps>((props: 
                       />
                     </WithTooltip>
                   </div>
-                )}
+                )} */}
               </div>
             );
           })

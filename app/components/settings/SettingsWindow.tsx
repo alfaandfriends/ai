@@ -26,9 +26,12 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
 
   const tabs: { id: TabType; label: string; icon: string; component?: ReactElement }[] = [
     { id: 'data', label: 'Data', icon: 'i-ph:database', component: <DataTab /> },
-    { id: 'providers', label: 'Providers', icon: 'i-ph:key', component: <ProvidersTab /> },
-    { id: 'connection', label: 'Connection', icon: 'i-ph:link', component: <ConnectionsTab /> },
-    { id: 'features', label: 'Features', icon: 'i-ph:star', component: <FeaturesTab /> },
+
+    /*
+     * { id: 'providers', label: 'Providers', icon: 'i-ph:key', component: <ProvidersTab /> },
+     * { id: 'connection', label: 'Connection', icon: 'i-ph:link', component: <ConnectionsTab /> },
+     * { id: 'features', label: 'Features', icon: 'i-ph:star', component: <FeaturesTab /> },
+     */
     ...(debug
       ? [
           {
@@ -92,7 +95,7 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
                   </button>
                 ))}
                 <div className="mt-auto flex flex-col gap-2">
-                  <a
+                  {/* <a
                     href="https://github.com/stackblitz-labs/bolt.diy"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -109,7 +112,7 @@ export const SettingsWindow = ({ open, onClose }: SettingsProps) => {
                   >
                     <div className="i-ph:book" />
                     Docs
-                  </a>
+                  </a> */}
                 </div>
               </div>
 

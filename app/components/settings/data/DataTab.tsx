@@ -318,7 +318,7 @@ export default function DataTab() {
               <h4 className="text-bolt-elements-textPrimary mb-2">Chat History</h4>
               <p className="text-sm text-bolt-elements-textSecondary mb-4">Export or delete all your chat history.</p>
               <div className="flex gap-4">
-                <button
+                {/* <button
                   onClick={handleExportAllChats}
                   className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors"
                 >
@@ -329,7 +329,7 @@ export default function DataTab() {
                   className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors"
                 >
                   Import Chats
-                </button>
+                </button> */}
                 <button
                   onClick={handleDeleteAllChats}
                   disabled={isDeleting}
@@ -343,7 +343,7 @@ export default function DataTab() {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <h4 className="text-bolt-elements-textPrimary mb-2">Settings Backup</h4>
               <p className="text-sm text-bolt-elements-textSecondary mb-4">
                 Export your settings to a JSON file or import settings from a previously exported file.
@@ -360,9 +360,9 @@ export default function DataTab() {
                   <input type="file" accept=".json" onChange={handleImportSettings} className="hidden" />
                 </label>
               </div>
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <h4 className="text-bolt-elements-textPrimary mb-2">API Keys Management</h4>
               <p className="text-sm text-bolt-elements-textSecondary mb-4">
                 Import API keys from a JSON file or download a template to fill in your keys.
@@ -379,7 +379,7 @@ export default function DataTab() {
                   <input type="file" accept=".json" onChange={handleImportApiKeys} className="hidden" />
                 </label>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

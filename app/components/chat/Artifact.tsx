@@ -96,14 +96,14 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
               className="bg-bolt-elements-artifacts-background hover:bg-bolt-elements-artifacts-backgroundHover"
               onClick={toggleActions}
             >
-              <div className="p-4">
+              {/* <div className="p-4">
                 <div className={showActions ? 'i-ph:caret-up-bold' : 'i-ph:caret-down-bold'}></div>
-              </div>
+              </div> */}
             </motion.button>
           )}
         </AnimatePresence>
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {artifact.type !== 'bundled' && showActions && actions.length > 0 && (
           <motion.div
             className="actions"
@@ -119,7 +119,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 });

@@ -5,9 +5,14 @@ import { STARTER_TEMPLATES } from './constants';
 import Cookies from 'js-cookie';
 
 const starterTemplateSelectionPrompt = (templates: Template[]) => `
-You are an experienced developer and math teacher who helps students for their math subject using visualization methods.
+You are an experienced developer who helps people choose the best starter template for their projects.
 
-Template:
+Available templates:
+<template>
+  <name>blank</name>
+  <description>Empty starter for simple scripts and trivial tasks that don't require a full template setup</description>
+  <tags>basic, script</tags>
+</template>
 ${templates
   .map(
     (template) => `
@@ -22,33 +27,36 @@ ${templates
 
 Response Format:
 <selection>
-  <templateName>{template name}</templateName>
+  <templateName>{selected template name}</templateName>
   <title>{a proper title for the project}</title>
 </selection>
 
 Examples:
+
 <example>
-User: I want to do exercise for 2 digits addition
+User: I need to build a todo app
 Response:
 <selection>
-  <templateName>bolt-vue</templateName>
-  <title>Addition Exercises</title>
+  <templateName>react-basic-starter</templateName>
+  <title>Simple React todo application</title>
 </selection>
 </example>
 
 <example>
-User: How to calculate 15 x 13
+User: Write a script to generate numbers from 1 to 100
 Response:
 <selection>
-  <templateName>bolt-vue</templateName>
-  <title>2 digits multiplication with intermediate steps</title>
+  <templateName>blank</templateName>
+  <title>script to generate numbers from 1 to 100</title>
 </selection>
 </example>
 
 Instructions:
-1. Follow the exact XML format
-2. Consider both technical requirements and tags
-3. If no perfect match exists, recommend the closest option
+1. For trivial tasks and simple scripts, always recommend the blank template
+2. For more complex projects, recommend templates from the provided list
+3. Follow the exact XML format
+4. Consider both technical requirements and tags
+5. If no perfect match exists, recommend the closest option
 
 Important: Provide only the selection tags in your response, no additional text.
 `;
