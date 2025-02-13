@@ -375,7 +375,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
                   </svg>
                   <div>
-                    {/* <ClientOnly>
+                    <ClientOnly>
                       {() => (
                         <div className={isModelSettingsCollapsed ? 'hidden' : ''}>
                           <ModelSelector
@@ -400,7 +400,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </div>
                       )}
-                    </ClientOnly> */}
+                    </ClientOnly>
                   </div>
                   <FilePreview
                     files={uploadedFiles}
