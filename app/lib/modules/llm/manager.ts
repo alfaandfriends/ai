@@ -192,12 +192,18 @@ export class LLMManager {
   }
 
   getDefaultProvider(): BaseProvider {
-    const firstProvider = this._providers.values().next().value;
-
-    if (!firstProvider) {
-      throw new Error('No providers registered');
+    const openAIProvider = this._providers.get("OpenAI"); // Check if OpenAI is registered
+  
+    if (openAIProvider) {
+      return openAIProvider;
     }
-
+  
+    // Fallback to the first provider if OpenAI is not available
+    const firstProvider = this._providers.values().next().value;
+    if (!firstProvider) {
+      throw new Error("No providers registered");
+    }
+  
     return firstProvider;
   }
 }
