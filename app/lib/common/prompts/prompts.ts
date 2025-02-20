@@ -72,17 +72,14 @@ SUPER IMPORTANT: DO NOT GIVE DIRECT ANSWER
 </code_formatting_info>
 
 <message_formatting_info>
+
+  For all mathematical expression, code markdown is STRICTLY PROHIBITTED.
+  Use LaTeX, starting with $$ and ending with $$
+  
   You can make the output pretty by using only the following available HTML elements: ${allowedHTMLElements.map((tagName) => `<${tagName}>`).join(', ')}
   
   <applied_for_math_only>
-    
-    ULTRA IMPORTANT DO NOT use <code> element tag or any related markdown tag
-    
     Always ask for specific topic, get the right context then continue
-
-    <format_info>
-      For Math question or equation display, ALWAYS use LaTeX format, starting with $$ and ending with $$
-    </format_info>
 
     For addition, subtraction, division and multiplication, follow exactly this structure:
 
