@@ -154,10 +154,10 @@ export const ChatImpl = memo(
           );
         },
         onFinish: (message, response) => {
-          const usage = response.usage;
+          const usage = message;
 
           if (usage) {
-            console.log('Token usage:', usage);
+            const usage = response.usage;
 
             // You can now use the usage data as needed
           }
@@ -169,8 +169,6 @@ export const ChatImpl = memo(
       });
     useEffect(() => {
       const prompt = searchParams.get('prompt');
-
-      // console.log(prompt, searchParams, model, provider);
 
       if (prompt) {
         setSearchParams({});
@@ -250,7 +248,6 @@ export const ChatImpl = memo(
 
     const sendMessage = async (_event: React.UIEvent, messageInput?: string) => {
       const _input = messageInput || input;
-
       if (_input.length === 0 || isLoading) {
         return;
       }
@@ -275,10 +272,11 @@ export const ChatImpl = memo(
       runAnimation();
 
       if (!chatStarted && _input && autoSelectTemplate) {
+        console.log('First')
         setFakeLoading(true);
         setMessages([
           {
-            id: `${new Date().getTime()}`,
+            id: `${Date.now()}`,
             role: 'user',
             content: [
               {
@@ -292,6 +290,7 @@ export const ChatImpl = memo(
             ] as any, // Type assertion to bypass compiler check
           },
         ]);
+        console.log('First Message')
 
         // reload();
 
@@ -300,6 +299,8 @@ export const ChatImpl = memo(
           model,
           provider,
         });
+        console.log(template, title)
+        reload();
 
         if (template !== 'blank') {
           const temResp = await getTemplates(template, title).catch((e) => {
@@ -313,8 +314,8 @@ export const ChatImpl = memo(
           });
 
           if (temResp) {
-            const { assistantMessage, userMessage } = temResp;
-
+            const { assistantMessage } = temResp;
+            console.log(temResp)
             setMessages([
               {
                 id: `${new Date().getTime()}`,
@@ -331,7 +332,7 @@ export const ChatImpl = memo(
               {
                 id: `${new Date().getTime()}`,
                 role: 'user',
-                content: `[Model: ${model}]\n\n[Provider: ${provider.name}]\n\n${userMessage}`,
+                content: `[Model: ${model}]\n\n[Provider: ${provider.name}]\n\n${_input}`,
                 annotations: ['hidden'],
               },
             ]);
@@ -413,7 +414,9 @@ export const ChatImpl = memo(
          * should now be aware of all the changes.
          */
         workbenchStore.resetAllFileModifications();
-      } else {
+      } 
+      else {
+        console.log('Else')
         append({
           role: 'user',
           content: [

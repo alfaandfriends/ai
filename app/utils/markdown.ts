@@ -1,5 +1,7 @@
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import rehypeKatex from 'rehype-katex'
+import remarkMath from 'remark-math'
 import type { PluggableList, Plugin } from 'unified';
 import rehypeSanitize, { defaultSchema, type Options as RehypeSanitizeOptions } from 'rehype-sanitize';
 import { SKIP, visit } from 'unist-util-visit';
@@ -67,7 +69,7 @@ const rehypeSanitizeOptions: RehypeSanitizeOptions = {
 };
 
 export function remarkPlugins(limitedMarkdown: boolean) {
-  const plugins: PluggableList = [remarkGfm];
+  const plugins: PluggableList = [remarkGfm, remarkMath];
 
   if (limitedMarkdown) {
     plugins.unshift(limitedMarkdownPlugin);
@@ -82,6 +84,7 @@ export function rehypePlugins(html: boolean) {
   if (html) {
     plugins.push(rehypeRaw, [rehypeSanitize, rehypeSanitizeOptions]);
   }
+  plugins.push(rehypeKatex); // Ensure rehypeKatex is included
 
   return plugins;
 }

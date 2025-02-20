@@ -5,7 +5,7 @@ import { STARTER_TEMPLATES } from './constants';
 import Cookies from 'js-cookie';
 
 const starterTemplateSelectionPrompt = (templates: Template[]) => `
-You are an experienced developer and math teacher who helps students for their math subject using visualization methods.
+You are an experienced developer and math teacher who helps students for their math subject.
 
 Template:
 ${templates
@@ -60,7 +60,8 @@ const parseSelectedTemplate = (llmOutput: string): { template: string; title: st
     // Extract content between <templateName> tags
     const templateNameMatch = llmOutput.match(/<templateName>(.*?)<\/templateName>/);
     const titleMatch = llmOutput.match(/<title>(.*?)<\/title>/);
-
+    console.error('templateNameMatch: ' + templateNameMatch)
+    console.error('titleMatch: ' + titleMatch)
     if (!templateNameMatch) {
       return null;
     }
@@ -85,10 +86,11 @@ export const selectStarterTemplate = async (options: { message: string; model: s
     body: JSON.stringify(requestBody),
   });
   const respJson: { text: string } = await response.json();
-  console.log(respJson);
 
   const { text } = respJson;
+  console.log(text)
   const selectedTemplate = parseSelectedTemplate(text);
+  console.log(selectedTemplate)
 
   if (selectedTemplate) {
     return selectedTemplate;
@@ -101,6 +103,7 @@ export const selectStarterTemplate = async (options: { message: string; model: s
     };
   }
 };
+
 
 const getGitHubRepoContent = async (
   repoName: string,
@@ -180,6 +183,7 @@ const getGitHubRepoContent = async (
     throw error;
   }
 };
+
 
 export async function getTemplates(templateName: string, title?: string) {
   const template = STARTER_TEMPLATES.find((t) => t.name == templateName);

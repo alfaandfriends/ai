@@ -146,7 +146,7 @@ export const Workbench = memo(({ chatStarted, isStreaming }: WorkspaceProps) => 
                 <div className="ml-auto" />
                 {selectedView === 'code' && (
                   <div className="flex overflow-y-auto">
-                    <PanelHeaderButton
+                    {/* <PanelHeaderButton
                       className="mr-1 text-sm"
                       onClick={() => {
                         workbenchStore.downloadZip();
@@ -201,7 +201,7 @@ export const Workbench = memo(({ chatStarted, isStreaming }: WorkspaceProps) => 
                     >
                       <div className="i-ph:github-logo" />
                       Push to GitHub
-                    </PanelHeaderButton>
+                    </PanelHeaderButton> */}
                   </div>
                 )}
                 <IconButton

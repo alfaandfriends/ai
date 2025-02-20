@@ -274,28 +274,30 @@ Here are some examples of correct usage of artifacts:
       Certainly! I'll create a bouncing ball with real gravity using React. We'll use the react-spring library for physics-based animations.
 
       <boltArtifact id="bouncing-ball-react" title="Bouncing Ball with Gravity in React">
-        <boltAction type="file" filePath="package.json">{
-  "name": "bouncing-ball",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-spring": "^9.7.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "vite": "^4.2.0"
-  }
-}</boltAction>
+        <boltAction type="file" filePath="package.json">
+          {
+            "name": "bouncing-ball",
+            "private": true,
+            "version": "0.0.0",
+            "type": "module",
+            "scripts": {
+              "dev": "vite",
+              "build": "vite build",
+              "preview": "vite preview"
+            },
+            "dependencies": {
+              "react": "^18.2.0",
+              "react-dom": "^18.2.0",
+              "react-spring": "^9.7.1"
+            },
+            "devDependencies": {
+              "@types/react": "^18.0.28",
+              "@types/react-dom": "^18.0.11",
+              "@vitejs/plugin-react": "^3.1.0",
+              "vite": "^4.2.0"
+            }
+          }
+        </boltAction>
 
         <boltAction type="file" filePath="index.html">...</boltAction>
 

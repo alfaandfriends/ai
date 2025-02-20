@@ -5,6 +5,7 @@ import { createScopedLogger } from '~/utils/logger';
 import { rehypePlugins, remarkPlugins, allowedHTMLElements } from '~/utils/markdown';
 import { Artifact } from './Artifact';
 import { CodeBlock } from './CodeBlock';
+import 'katex/dist/katex.min.css';
 
 import styles from './Markdown.module.scss';
 
@@ -31,7 +32,7 @@ export const Markdown = memo(({ children, html = false, limitedMarkdown = false 
 
           return <Artifact messageId={messageId} />;
         }
-
+        
         return (
           <div className={className} {...props}>
             {children}
@@ -40,26 +41,25 @@ export const Markdown = memo(({ children, html = false, limitedMarkdown = false 
       },
       pre: (props) => {
         const { children, node, ...rest } = props;
-
+      
         const [firstChild] = node?.children ?? [];
-
+      
         if (
           firstChild &&
           firstChild.type === 'element' &&
           firstChild.tagName === 'code' &&
           firstChild.children[0].type === 'text'
         ) {
-          const { className, ...rest } = firstChild.properties;
+          const { className, ...restCode } = firstChild.properties;
           const [, language = 'plaintext'] = /language-(\w+)/.exec(String(className) || '') ?? [];
-
-          return <CodeBlock code={firstChild.children[0].value} language={language as BundledLanguage} {...rest} />;
+          
+          const codeText = firstChild.children[0].value;
+          return <CodeBlock code={codeText} language={language as BundledLanguage} {...restCode} />;
         }
-
         return <pre {...rest}>{children}</pre>;
       },
     } satisfies Components;
   }, []);
-
   return (
     <ReactMarkdown
       allowedElements={allowedHTMLElements}
@@ -99,7 +99,6 @@ export const stripCodeFenceFromArtifact = (content: string) => {
 
   const lines = content.split('\n');
   const artifactLineIndex = lines.findIndex((line) => line.includes('__boltArtifact__'));
-
   // Return original content if artifact line not found
   if (artifactLineIndex === -1) {
     return content;

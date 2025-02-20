@@ -110,7 +110,6 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [isModelLoading, setIsModelLoading] = useState<string | undefined>('all');
 
     useEffect(() => {
-      console.log(transcript);
     }, [transcript]);
 
     useEffect(() => {
@@ -582,9 +581,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     handleStop?.();
                     return;
                   }
-
                   handleSendMessage?.(event, messageInput);
-                })}
+                })
+              }
               {/* {!chatStarted && <StarterTemplates />} */}
             </div>
           </div>
